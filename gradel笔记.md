@@ -22,3 +22,90 @@
 - 任务执行 `gradle 任务名` ， 一次可执行多个任务， 任务名也可以以驼峰式的缩写
 
 - 排除一个任务， 使用参数`-x`可在执行时排除你想要排除的的任务
+
+# 2, 构建Java项目
+
+- 使用插件
+
+```
+// 添加Java插件
+apply plugin: 'java'
+// 添加war插件
+apply plugin: 'war'
+```
+
+- 构建项目
+
+> gradle build<br>
+> 该任务会以正确的顺序编译你的源代码， 运行测试， 组装JAR文件
+
+- 运行项目
+
+> 在项目的根目录使用Java命令即可
+
+- 修改属性变量并添加JAR文件头
+
+```
+// 定义项目版本
+version = 0.1
+// 设置Java版本编译兼容1.8
+sourceCompatibility = 1.8
+// 将Main-Class头添加到JAR文件代码清单中
+jar {
+  manifest {
+    attributes 'Main-Class': 'Main-Class的位置'
+  }
+}
+```
+
+- 设置仓库和添加依赖
+
+```
+// 配置对Maven Central 2仓库maven2访问的快捷方式
+repositories {
+  mavenCentral()
+}
+// 添加依赖
+dependencies {
+  compile group: ‘org.apache.commons’, name: 'commons-long3', version: '3.1'
+}
+```
+
+## Web开发
+
+- 使用war
+
+  - 添加war插件
+
+  ```
+  apply plugin: 'war'
+  apply plugin: 'jetty'
+  ```
+
+  - 配置war
+
+  ```
+  webAppDirName: 'webfiles'
+  war {
+    from: 'static'
+  }
+  ```
+
+- 使用jetty
+
+  - 添加jetty插件
+
+  ```
+  apply plugin: 'jetty'
+  ```
+
+  - 配置jetty
+
+  ```
+  jettyRun {
+    // 设置端口
+    httpPort = 8081
+    // 设置上下文路径
+    contextPath = ‘MyProject’
+  }
+  ```
