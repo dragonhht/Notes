@@ -355,3 +355,20 @@ public class AspectTest {
    }
    }
 ```
+
+# 2, 集成Redis做数据缓存
+
+## 1， 添加依赖
+
+```
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-data-redis</artifactId>
+</dependency>
+```
+
+## 2， 项目开启缓存
+
+> 在springboot的启动类添加注解 `@EnableCaching`
+
+## 3, 在需缓存的地方使用缓存 `@Cacheable(value = "key")` value为数据库中的键， 必须写
