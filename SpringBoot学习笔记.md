@@ -375,6 +375,8 @@ public class AspectTest {
 
 # 3, 使用WebSocket
 
+# 1， 方法一
+
 - 依赖
 
 ```
@@ -455,5 +457,164 @@ function connect() {
 function sendMessage() {
         var text = $('.input_div textarea').val();
         stompClient.send("/chat", {}, JSON.stringify({'message': text}));
+    }
+```
+
+# 2， 方法二（点对点）
+
+- 配置
+
+```
+@Configuration
+@EnableWebSocket
+public class WebSocketConfig implements WebSocketConfigurer {
+
+    @Override
+    public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
+        registry.addHandler(myHandler(), "/webSocketHandler").addInterceptors(new HttpSessionIdHandshakeInterceptor());
+    }
+
+    @Bean
+    public WebSocketHandler myHandler() {
+        return new book.flow.websocket.WebSocketHandler();
+    }
+
+}
+```
+
+- websocket握手
+
+```
+@Component
+public class HttpSessionIdHandshakeInterceptor extends HttpSessionHandshakeInterceptor {
+
+    @Override
+    public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler, Map<String, Object> map) throws Exception {
+
+        if (request instanceof ServletServerHttpRequest) {
+            ServletServerHttpRequest serverHttpRequest = (ServletServerHttpRequest) request;
+            HttpSession session = serverHttpRequest.getServletRequest().getSession();
+            if (session != null) {
+                System.out.println("Session:" + ((User)session.getAttribute("user")).getUserId());
+                map.put("userId", ((User)session.getAttribute("user")).getUserId());
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public void afterHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler, Exception ex) {
+        super.afterHandshake(request, response, wsHandler, ex);
+    }
+}
+```
+
+- 处理类
+
+```
+@Service
+public class WebSocketHandler extends TextWebSocketHandler{
+
+    //在线用户列表
+    private static Map<Integer, WebSocketSession> users = new HashMap<>();
+    //用户标识
+    private static final String CLIENT_ID = "userId";
+
+
+    @Override
+    public void afterConnectionEstablished(WebSocketSession session) throws Exception {
+        System.out.println("成功建立连接");
+        Integer userId = getClientId(session);
+        if (userId != null) {
+            users.put(userId, session);
+            // session.sendMessage(new TextMessage("成功建立socket连接"));
+            System.out.println(userId);
+            System.out.println(session);
+        }
+    }
+
+    /**
+     * 发送信息给指定用户
+     * @param clientId
+     * @param message
+     * @return
+     */
+    public boolean sendMessageToUser(Integer clientId, TextMessage message) {
+        if (users.get(clientId) == null) return false;
+        WebSocketSession session = users.get(clientId);
+        System.out.println("sendMessage:" + session);
+        if (!session.isOpen()) return false;
+        try {
+            session.sendMessage(message);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+
+    @Override
+    protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
+        System.out.println(message.getPayload());
+
+        WebSocketMessage message1 = new TextMessage("server:"+message);
+        /*try {
+            session.sendMessage(message1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+    }
+
+    private Integer getClientId(WebSocketSession session) {
+        try {
+            Integer clientId = (Integer) session.getAttributes().get(CLIENT_ID);
+            return clientId;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+}
+```
+
+- controller调用
+
+```
+@PostMapping("/message")
+    @ResponseBody
+    public String sendMessage(Message message) {
+        int toUser = message.getUserId();
+        boolean hasSend = webSocketHandler.sendMessageToUser(toUser, new TextMessage(message.getMessage()));
+        return "message";
+    }
+```
+
+- 前端使用
+
+```
+var ws = new WebSocket("ws://localhost:8080/FlowBook/webSocketHandler");
+    ws.onopen = function () {
+        console.log("onpen");
+        ws.send("{}");
+    };
+    ws.onclose = function () {
+        console.log("onclose");
+    };
+    ws.onmessage = function (msg) {
+        console.log(msg.data);
+        showMessage(msg.data);
+    }
+
+    function sendMessage() {
+        var text = $('.input_div textarea').val();
+        var to = $('#toUser').val();
+        $.post('../message',
+            {
+                message : text,
+                userId : to
+            },
+        function (data) {
+            console.log("data:" + data);
+        })
     }
 ```
