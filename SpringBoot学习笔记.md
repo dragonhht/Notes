@@ -372,3 +372,88 @@ public class AspectTest {
 > 在springboot的启动类添加注解 `@EnableCaching`
 
 ## 3, 在需缓存的地方使用缓存 `@Cacheable(value = "key")` value为数据库中的键， 必须写
+
+# 3, 使用WebSocket
+
+- 依赖
+
+```
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-websocket</artifactId>
+</dependency>
+
+<dependency>
+    <groupId>org.webjars</groupId>
+    <artifactId>webjars-locator</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.webjars</groupId>
+    <artifactId>sockjs-client</artifactId>
+    <version>1.0.2</version>
+</dependency>
+<dependency>
+    <groupId>org.webjars</groupId>
+    <artifactId>stomp-websocket</artifactId>
+    <version>2.3.3</version>
+</dependency>
+```
+
+- 配置
+
+```
+@Configuration
+@EnableWebSocketMessageBroker
+public class WebSocketConfiguration extends AbstractWebSocketMessageBrokerConfigurer {
+
+    @Override
+    public void configureMessageBroker(MessageBrokerRegistry config) {
+        config.enableSimpleBroker("/topic");
+    }
+
+    @Override
+    public void registerStompEndpoints(StompEndpointRegistry stompEndpointRegistry) {
+      // 设置websocket服务器
+        stompEndpointRegistry.addEndpoint("/FlowBook").withSockJS();
+    }
+}
+```
+
+- 接受和发送消息
+
+```
+@Controller
+@EnableWebSocket // 不开启则无法访问 @MessageMapping
+public class WsController {
+
+    @MessageMapping("/chat")
+    @SendTo("/topic/greetings")
+    public Message chat(Message message) {
+        System.out.println(message);
+        return message;
+    }
+}
+```
+
+- 前端代码
+
+```
+// 连接服务
+var stompClient = null;
+function connect() {
+    var socket = new SockJS('http://localhost:8080/FlowBook/FlowBook');
+    stompClient = Stomp.over(socket);
+    stompClient.connect({}, function (frame) {
+    console.log('Connected: ' + frame);
+    stompClient.subscribe('/topic/greetings', function (greeting) {
+    showMessage(JSON.parse(greeting.body).message);
+    });
+    });
+}
+
+// 发送消息
+function sendMessage() {
+        var text = $('.input_div textarea').val();
+        stompClient.send("/chat", {}, JSON.stringify({'message': text}));
+    }
+```
