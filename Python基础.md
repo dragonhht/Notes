@@ -156,3 +156,24 @@ while 表达式:
 def 函数名(参数列表):
   函数体
 ```
+
+# 5, 错误和异常
+
+- 异常捕获
+
+```
+try:
+    f2 = open("file/test2.txt", "w")
+    f2.write("这是一个创建文件的测试")
+except Exception, e:
+    print "写入错误",  e
+finally:
+    f2.close()
+```
+
+- 使用with打开文件
+
+```
+with open("file/test2.txt", "r") as f5:
+    print f5.read()
+```
