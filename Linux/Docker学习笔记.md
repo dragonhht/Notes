@@ -74,3 +74,14 @@
 
 # 4， Docker仓库
 
+
+# 5, Docker数据管理
+
+
+# 6， 端口映射与容器互联
+
+-   使用在`docker run` 时使用`-p`参数，格式为：`-p IP:HostPort:ContainerPort|IP:ContrinerPort|Host:ContainerPort`, 例如映射至本机5000端口`docker run -it -p 5000:5000 ubuntu`，或指定IP：`docker run -it -p 127.0.0.1：5000:5000 ubuntu`
+
+-   使用`IP::ContainerPort`,绑定任意端口到容器的某一端口，本地主机会自动分配一个端口，如：`docker run -it -p 127.0.0.1::5000 ubuntu`，每次开启可能发生改变
+
+-   查看端口映射配置，如`docker port 872c825d8cf6 5000`
