@@ -85,3 +85,31 @@
 -   使用`IP::ContainerPort`,绑定任意端口到容器的某一端口，本地主机会自动分配一个端口，如：`docker run -it -p 127.0.0.1::5000 ubuntu`，每次开启可能发生改变
 
 -   查看端口映射配置，如`docker port 872c825d8cf6 5000`
+
+-   容器互联，使用`--link`连接容器，如：`docker run -it --link 容器名:别名 镜像名或ID`,使用是在容器内通过ip使用,ip可通过`/etc/hosts`查看
+
+# 7, 使用Dockerfile创建镜像
+
+## 1, 使用dockerfile创建
+
+-   创建一个文件夹 ，`mkdir test_docker`
+
+-   进人文件夹，创建Dockerfile和run.sh文件，`touch Dockerfile run.sh`
+
+-   编写dockerfile文件
+
+-   创建镜像：`docker build -t 镜像名 dockerfile路径（在哪目录下即可）`
+
+# 8, 数据库的使用
+
+## 1， MYSQL
+
+-   启动实例：`docker run -e MYSQL_ROOT_PASSWORD=密码 -d mysql[:TAG]`
+
+-   使用`docker exec`调用内部系统的bash shell, 如：`docker exec -it 容器名或ID bash`,进入容器后，可进入MySQL客户端
+
+## 2， redis
+
+-   启动redis容器：`docker run --name redis -d redis`
+
+-   进入容器内部` docker exec -it 容器名或ID bash`
