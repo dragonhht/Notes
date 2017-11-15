@@ -8,7 +8,7 @@
 
     2.  64位平台
 
-- 使用curl安装
+-   使用curl安装
 
     1.  检查是否安装curl `which curl`
 
@@ -42,7 +42,7 @@
 
     1.  基于已有镜像的容器创建 `docker commit -c "描述" -a "作者信息" 使用ID NEWNAME:TAG`
 
-    2. 基于本地模板导入 ， 例如`docker import - ubuntu:14.04`
+    2.  基于本地模板导入 ， 例如`docker import - ubuntu:14.04`
 
 -   存出镜像，导出镜像到本地文件，如`docker save -o ubuntu_14.04.tar ubuntu:14.04`
 
@@ -113,3 +113,6 @@
 -   启动redis容器：`docker run --name redis -d redis`
 
 -   进入容器内部` docker exec -it 容器名或ID bash`
+
+# 9, WEB服务与应用
+
