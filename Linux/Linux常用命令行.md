@@ -2,22 +2,22 @@
 
 ## 安装命令
 - deb
-==sudo  dpkg  -i  *.deb==
+  ==sudo  dpkg  -i  *.deb==
 
 - apt-get
-		==sudo apt-get install xxx==
-		
+   ==sudo apt-get install xxx==
+
 - make install源代码安装
-		1.解压缩
-		==tar -zxf nagios-4.0.2.tar.gz==  
-		2.进入目录
-		==cd nagios-4.0.2==
-		3.配置
-		==./configure --prefix=/usr/local/nagios==     
-		4.编译
-		==make all==
-		5.安装
-		==make install && make install-init && make install-commandmode && make install-config==
+   1.解压缩
+   	==tar -zxf nagios-4.0.2.tar.gz==  
+   	2.进入目录
+   	==cd nagios-4.0.2==
+   	3.配置
+   	==./configure --prefix=/usr/local/nagios==     
+   	4.编译
+   	==make all==
+   	5.安装
+   	==make install && make install-init && make install-commandmode && make install-config==
 
 - 以root权限打开文件管理
    ==sudo nautilus==
@@ -33,14 +33,14 @@
 
 
 - MySQL数据库
-1，安装
->		sudo apt-get update   
->		sudo apt-get install mysql-server mysql-client
+  1，安装
+  >	sudo apt-get update   
+  >	sudo apt-get install mysql-server mysql-client
 
-		
+
 2，检查服务是否启动
 >		sudo netstat -tap | grep mysql    （启动显示cp 0 0 localhost.localdomain:mysql *:* LISTEN - ）
-	
+
 3，启动服务
 >		sudo /etc/init.d/mysql restart 
 
@@ -51,21 +51,21 @@
 5 , 修改编码
 > cd /etc/mysql  
 > vi my.cnf  
->添加  
+> 添加  
 > [mysqld]  
 > collation-server = utf8_unicode_ci  
 > init-connect='SET NAMES utf8'  
 > character-set-server = utf8  
 > skip-character-set-client-handshake  
->  
+>
 > [client]  
 > default-character-set   = utf8  
->   
+>
 > [mysql]  
 > default-character-set   = utf8  
 
 - 安装mysql workbench（客户端）
->	sudo dpkg -i mysql-workbench-community-6.3.5-1ubu1504-amd64.deb
+  >sudo dpkg -i mysql-workbench-community-6.3.5-1ubu1504-amd64.deb
 
 
 - 配置jdk
@@ -82,10 +82,10 @@
 > sudo chmod -R 755 /opt/jvm/apache-tomcat-8.0.37
 
 - Ubuntu与Windows10时间相差8小时的解决
->	timedatectl set-local-rtc true 
+  >timedatectl set-local-rtc true 
 
 - 建立桌面快捷方式
-1, 运行
+  1, 运行
 > sudo gedit  /usr/share/applications/小书匠.desktop
 
 2,文件写入
@@ -100,3 +100,9 @@
 > Type=Application  
 > Categories=Application;Development;  
 
+
+
+# 设置远程连接服务器MySQL
+
+1. 修改`/etc/mysql/mysqld.cnf` 注释 `bind-address = 127.0.0.1` 
+2. 在MySQL中添加也有任意ip访问的用户 `GRANT ALL PRIVILEGES ON *.* TO ‘huang'@'%' IDENTIFIED BY 'admin' WITH GRANT OPTION` 
