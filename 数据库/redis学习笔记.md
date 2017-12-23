@@ -1,5 +1,9 @@
 # 五种数据结构
 
+> 参考文档`http://redisdoc.com/`
+
+
+
 ## 1, STRING(字符串)
 
 - SET (设置存储在给定键中值)
@@ -85,3 +89,41 @@
 - ZREM (如果给定成员存在于有序集合中,那么移除这个元素)
 
   > zrem zset-key member1
+
+# 基本配置
+
+## 主要配置文件内容
+
+- `INCLUDES` ：用于添加其他配置文件
+
+- `NETWORK`：主要用于设置IP、端口等一些网络配置
+
+- `GENERAL`： 通用配置
+
+- `SNAPSHOTTING`： 快照
+
+- `REPLICATION`：主从复制
+
+- `SECURITY`
+
+- `LIMITS`：配置连接限制，如连接数
+
+- `APPEND ONLY MODE`： 追加
+
+- `LUA SCRIPTING`： 配置Lua脚本的最大执行时间
+
+  ​
+
+## 1、 服务后台运行
+
+> 在redis配置文件中的通用配置(GENERAL)下将`daemonize` 修改为`yes`, 启动服务时制定该配置文件
+
+
+
+# 基本操作
+
+- 切换数据库：`select <dbid>` , 如切换为7号数据库`select 6`
+- 查询当前数据库中key的数量：`dbsize` 
+- 查看当前数据库中的所有键：`keys *` 
+- 清空当前数据库：`flushdb` 
+- ​
