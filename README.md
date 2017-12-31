@@ -28,6 +28,10 @@
 
 -   [设计模式笔记](./Java/设计模式笔记.md)
 
+## Kotlin
+
+-   [Kotlin学习](https://github.com/dragonhht/Kotlin-Study-Java/blob/master/README.md)
+
 ## Linux
 
 -   [Docker学习笔记](./Linux/Docker学习笔记.md)
