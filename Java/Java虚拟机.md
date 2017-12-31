@@ -36,7 +36,14 @@ Java栈与数据结构上的栈有着类似的含义，他是一块先进先出�
 
 
 
+# 二、类的加载
 
+## 1、ClassLoader的分类
 
+- BootStrap ClassLoader(启动类加载器)：一般负责加载系统的核心类，如，rt.jar中的Java类
+- Extendsion ClassLoader(扩展类加载器)：用于加载%JAVA_HOME%/lib/ext/*.jar中的Java类
+- App ClassLoader(应用类加载器，系统类加载器)：用于加载用户程序的类
+- 自定义的ClassLoader：加载一些特殊途径的类，一般也是用户类
 
+![JavaClassLoader](https://github.com/dragonhht/GitImgs/blob/master/Notes/JavaClassLoader.png?raw=true)
 
