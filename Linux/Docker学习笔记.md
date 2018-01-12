@@ -60,7 +60,7 @@
 
 -   进入容器
 
-    1.  使用`attach`命令：`docker attach 容器名或ID`
+    1.  使用`attach`命令：`docker attach 容器名或ID`, 退出时使用快捷键`Ctrl + P + Q`退出容器不停止，使用`exit`退出时，容器将关闭
 
     2.  使用`exec`命令(推荐)： `docker exec -it 容器名或ID /bin/bash`
 
@@ -99,6 +99,20 @@
 -   编写dockerfile文件
 
 -   创建镜像：`docker build -t 镜像名 dockerfile路径（在哪目录下即可）`
+
+
+### 1, build命令
+
+> 用于构建image
+
+-   格式
+
+    > docker build [options] path | url | -  
+    > -f            强制使用自定义的构建文件  
+    > --rm=true     设置构建完成后是否删除临时文件  
+    > -t            指定镜像tag
+
+> build命令中path、url和-（如果使用URL则URL参数必须指向一个git地址）是必须项，至少需要输入一个， docker在构建一个image时，需要读取一个配置文件。这个配置文件就是Dockerfile。这个文件的默认文件名为Dockerfile，但也可以是其他名，不一定是Dockerfile。用户可以通过path|url|-来指定Dockerfile
 
 # 8, 数据库的使用
 
