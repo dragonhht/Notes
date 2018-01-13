@@ -114,6 +114,52 @@
 
 > build命令中path、url和-（如果使用URL则URL参数必须指向一个git地址）是必须项，至少需要输入一个， docker在构建一个image时，需要读取一个配置文件。这个配置文件就是Dockerfile。这个文件的默认文件名为Dockerfile，但也可以是其他名，不一定是Dockerfile。用户可以通过path|url|-来指定Dockerfile
 
+## 2、DockerFile文件
+
+> Dockerfile语法，就是命令+参数+参数...
+
+### 1、Dockerfile的内置命令
+
+| 内置命令       | 作用                                |
+| ---------- | --------------------------------- |
+| FROM       | 指明基础镜像名称。必填                       |
+| MAINTAINER | 可用于提供作者、版本及其他备注信息。可选              |
+| RUN        | 用于执行后面的命令，当RUN执行完毕后，将产生一个新的文件层。可选 |
+| CMD        | 指定镜像启动时默认执行命令。可选                  |
+| LABEL      | 用于在镜像中添加元数据。例如版本号、构建日期等。可选        |
+| EXPOSE     | 用于指定需要暴露的网络端口号可选                  |
+| ENV        | 用于在镜像中添加环境变量。可选                   |
+| ADD        | 向镜像添加新的文件或者新目录。可选                 |
+| COPY       | 从主机向镜像复制文件。可选                     |
+| ENTRYPOINT | 在镜像中设定默认执行的二进制程序。可选               |
+| VOLUME     | 向镜像中挂在一个卷组。可选                     |
+| USER       | 在镜像构建过程中，生成或者切换到另一用户。可选           |
+| WORKDIR    | 设置镜像后续操作的默认工作目录。可选                |
+| ONBUILD    | 配置构建触发指令集。可选                      |
+
+### 2、示例
+
+```dockerfile
+# 设置基础镜像
+FROM ubuntu
+
+# 备注信息
+MAINTAINER Example dragonhht
+
+# 更新软件源
+RUN apt-get update
+
+# 安装vim
+RUN apt-get install -y vim
+
+# 暴露端口
+EXPOSE 22
+
+RUN echo "完成"
+```
+
+
+
 # 8, 数据库的使用
 
 ## 1， MYSQL
