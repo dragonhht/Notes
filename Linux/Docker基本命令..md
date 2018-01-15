@@ -42,3 +42,11 @@
 - inspect命令
 
 > docker inspect [options] 容器|镜像
+
+- stats命令
+
+> 用于查看容器资源情况，docker stats 容器
+
+- top命令
+
+> 查看容器CPU、内存和网络吞吐数据，docker top 容器
