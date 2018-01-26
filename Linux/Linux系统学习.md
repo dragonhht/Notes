@@ -156,3 +156,27 @@
 - 设备的挂载：`mount -t  文件系统类型 设备名 挂载点`
 - 设备的卸载：`umount 挂载目录`
 
+
+## 3、系统服务管理工具systemd
+
+### 1、服务管理
+
+- 启动服务：如，`systemctl start httpd.service`
+- 停止服务：如，`systemctl stop httpd.service`
+- 重启服务
+  - 如果服务在运行中，则重启服务，若不在运行中，则将会启动：如，`systemctl restart httpd.service`
+  - 只在服务已存在运行的状态下启动服务：如，`systemctl try-restart httpd.service`
+  - 重新加载配置文件：如，`systemctl reload httpd.service`
+- 使用`enable/disable`控制服务是否开机启动，如设置开机启动， `systemctl enable httpd.service`
+  - 使用`status`查看运行状态：如，`systemctl status httpd.service`
+
+### 2、系统电源管理
+
+| systemctl命令            | 含义       |
+| ---------------------- | -------- |
+| systemctl poweroff     | 关闭系统     |
+| systemctl reboot       | 重启系统     |
+| systemctl suspend      | 进入待机模式   |
+| systemctl hibernate    | 进入休眠模式   |
+| systemctl hybrid-sleep | 进入混合休眠模式 |
+
