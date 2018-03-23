@@ -69,6 +69,11 @@
 
 
 - 配置jdk
+
+  - 下载
+
+  > curl -L "http://download.oracle.com/otn-pub/java/jdk/8u161-b12/2f38c3b165be4555a1fa6e98c45e0808/jdk-8u161-linux-x64.tar.gz" -H "Cookie: oraclelicense=accept-securebackup-cookie"  -H "Connection: keep-alive" -O
+
 > sudo gedit /etc/profile  
 > export JAVA_HOME=/opt/jvm/jdk1.8.0_102  
 > export JRE_HOME=${JAVA_HOME}/jre  
