@@ -30,6 +30,7 @@
 -   [Linux学习笔记](./Linux/Linux学习笔记.md)
 -   [Linux常用命令行](./Linux/Linux常用命令行.md)
 -   [Linux系统学习](./Linux/Linux系统学习.md)
+-   [记一次Linux系统引导修复](./Linux/记一次Linux系统引导修复.md)
 
 ## Python
 
