@@ -8,15 +8,13 @@
 
     2.  64位平台
 
--   使用curl安装
+-   安装
 
-    1.  检查是否安装curl `which curl`
+    1.  更新软件源并安装docker：`sudo apt-get update $ sudo apt-get install docker.io`
 
-    2.  如果curl没有安装的话，更新apt源之后，安装curl包 `sudo apt-get update $ sudo apt-get install curl`
+    2.  启动docker服务：`sudo service docker start`
 
-    3.  获得最新的docker安装包 `curl -sSL https://get.docker.com/ | sh `
-
-    4.  将用户加入到docker用户组 `sudo usermod -aG docker USER_NAME`
+    3.  将用户加入到docker用户组 `sudo usermod -aG docker USER_NAME`
 
 # 2, 相关命令
 
