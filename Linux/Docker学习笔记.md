@@ -10,7 +10,7 @@
 
 -   安装
 
-    1.  更新软件源并安装docker：`sudo apt-get update $ sudo apt-get install docker.io`
+    1.  更新软件源并安装docker：`sudo apt-get update & sudo apt-get install docker-ce`
 
     2.  启动docker服务：`sudo service docker start`
 
