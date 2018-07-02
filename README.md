@@ -23,6 +23,10 @@
 
 -   [Kotlin学习](https://github.com/dragonhht/Kotlin-Study-Java/blob/master/README.md)
 
+## 分布式
+
+-   [Dubbo学习笔记](https://github.com/dragonhht/dubbo-study-kotlin/blob/master/readme.md)
+
 ## Linux
 
 -   [Docker学习笔记](./Linux/Docker学习笔记.md)
