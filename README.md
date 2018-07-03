@@ -26,6 +26,7 @@
 ## 分布式
 
 -   [Dubbo学习笔记](https://github.com/dragonhht/dubbo-study-kotlin/blob/master/readme.md)
+-   [ZooKeeper学习笔记](./Java/ZooKeeper学习笔记.md)
 
 ## Linux
 
