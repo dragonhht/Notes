@@ -23,6 +23,10 @@
 
 -   [Kotlin学习](https://github.com/dragonhht/Kotlin-Study-Java/blob/master/README.md)
 
+## web框架
+
+-   [Shiro学习](https://github.com/dragonhht/shiro-study/blob/master/readme.md)
+
 ## 分布式
 
 -   [Dubbo学习笔记](https://github.com/dragonhht/dubbo-study-kotlin/blob/master/readme.md)
