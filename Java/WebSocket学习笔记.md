@@ -73,7 +73,7 @@ WebSocket中RemoteEndpoint接口和它的子类(RemoteEndpoint.Basic和RemoteEnd
 
 
 
-# 我的一对一的例子
+# 4、我的一对一的例子
 
 - WebSocket服务器端点
 
@@ -163,5 +163,63 @@ public class WebSocketClient {
 }
 ```
 
+# 5、Spring Boot使用原生的WebSocket
 
+-   定义端点
 
+    ```kotlin
+    @Component
+    @ServerEndpoint("/end/point/{id}")
+    class ReceiveEndpoint {
+
+        @Reference
+        lateinit var sendService : SendService
+
+        /**
+        * 连接开启时.
+        */
+        @OnOpen
+        fun onOpen(session: Session) {
+            println("open")
+        }
+
+        /**
+        * 消息接收.
+        */
+        @OnMessage
+        fun onMessage(text : String) {
+            println("message: " + text)
+        }
+
+        /**
+        * 错误发生时.
+        */
+        @OnError
+        fun onError(throwable: Throwable) {
+
+        }
+
+        /**
+        * 连接关闭.
+        */
+        @OnClose
+        fun onClose() {
+            println("close")
+        }
+
+    }
+    ```
+
+-   配置WebSocket
+
+    ```kotlin
+    @Configuration
+    open class WebSocketConfig {
+
+        @Bean
+        open fun serverEndpointExporter() : ServerEndpointExporter {
+            return ServerEndpointExporter()
+        }
+
+    }
+    ```
