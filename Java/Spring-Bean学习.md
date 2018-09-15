@@ -1,3 +1,64 @@
+# 容器
+
+接口`org.springframework.context.ApplicationContext`表示Spring IoC容器，负责实例化，配置和组装bean。容器通过读取配置元数据获取有关要实例化、配置和组装的对象的指令。
+
+# Bean概述
+
+在容器内bean的定义包含以下信息:
+
+-   `包限定的类名`：通常定义ben的实现类
+-   `bean的行为元素`:包含bean的范围、生命周期等
+-   `依赖项`：该bean所引用的依赖项
+-   `设置其他属性配置`：如配置连接池bean中使用的连接数等
+
+# Bean的实例化
+
+-   使用静态方法实例化bean
+
+    -   指定本类中的静态方法实例化对象(単例模式),官方实例配置如下
+
+    ```
+    <bean id="clientService"
+        class="examples.ClientService"
+        factory-method="createInstance"/>
+    ```
+
+    ```
+    public class ClientService {
+        private static ClientService clientService = new ClientService();
+        private ClientService() {}
+
+        public static ClientService createInstance() {
+            return clientService;
+        }
+    }
+    ```
+
+    -   调用容器中其他类的方法实例化bean,官方实例如下
+
+    ```
+    <bean id="serviceLocator" class="examples.DefaultServiceLocator">
+    </bean>
+
+    <!-- 该bean的定义中class属性为空 -->
+    <bean id="clientService"
+        factory-bean="serviceLocator"
+        factory-method="createClientServiceInstance"/>
+    ```
+
+    ```
+    public class DefaultServiceLocator {
+
+        private static ClientService clientService = new ClientServiceImpl();
+
+        public ClientService createClientServiceInstance() {
+            return clientService;
+        }
+    }
+    ```
+
+
+
 # Bean的作用域
 
 在最新的Spring Framework中支持六种作用域，且其中有四种只适合于web的Spring ApplicationContext
