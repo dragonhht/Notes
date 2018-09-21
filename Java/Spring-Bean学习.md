@@ -57,8 +57,6 @@
     }
     ```
 
-
-
 # Bean的作用域
 
 在最新的Spring Framework中支持六种作用域，且其中有四种只适合于web的Spring ApplicationContext
@@ -69,4 +67,5 @@
 -   `session`：一个HTTPSession，对应一个bean实例
 -   `application`：一个ServletContext，对应一个bean实例
 -   `websocket`：一个WebSocket，对应一个bean实例
-   
+
+
