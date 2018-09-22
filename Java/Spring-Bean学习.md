@@ -59,13 +59,17 @@
 
 # Bean的作用域
 
-在最新的Spring Framework中支持六种作用域，且其中有四种只适合于web的Spring ApplicationContext
+在Spring2.0之前spring中bean的作用域只有`singleton（単例）`及`prototype（原型）`两种。在Spring2.0后便又增加了`request`、`session`及`application`三种作用域，且这三种作用域都只用于基于web的Spring ApplicationContext。直到现在，Spring又增加了作用与`webSocket`的作用域，该作用域与2.0之后增加的三种作用域一样都只作用与基于web的Spring ApplicationContext。一下便依次介绍者六中作用域
 
--   `singleton`:単例（默认），定义该作用域后，在Spring IOC中只会存在一个共享的bean实例。所有对该bean的请求，只要匹配，都只会返回bean的同一实例
--   `prototype`：原型，定义该作用域后，每次对bean的请求（注入，或通过getBean获取）都会创建一个新的bean实例。
--   `request`：在HTTP请求时，每次请求都会有个对应的bean实例。该实例仅在本次请求内有效，当请求处理完毕后，request域的bean实例也将销毁
--   `session`：一个HTTPSession，对应一个bean实例
--   `application`：一个ServletContext，对应一个bean实例
--   `websocket`：一个WebSocket，对应一个bean实例
+-   `singleton`: 该作用域是Spring bean默认的作用域；使用该作用域时，在Spring IOC容器中只会存在一个共享的bean实例。所有的对该bean的请求（如通过注入或getBean方法获取实例）都只会获取同一个实例。针对于该作用域，Spring容器可进行比较全面的生命周期的管理
 
+-   `prototype`: 使用该作用域时，所有对于该bean的请求都会返回一个新的实例，即每次请求，都会创建一个新的实例
+
+-   `request`: 该作用域将bean的作用范围限定在单个HTTP请求中，即每次HTTP请求都会创建一个新的bean实例，是的每次HTTP请求都有一个自己的实例。该作用域只用于基于web的Spring ApplicationContext。
+
+-   `session`: 该作用域将bean的作用范围限定在HTTP请求中的Session的生命周期内。即bean的生命周期与Session一致，当Session存活时，该bean的实例也存活，但当Session销毁时，该Session内的bean实例也将被销毁。适合于基于web的Spring ApplicationContext
+
+-   `application`: 使用该作用域时，在整个web程序中，只会存在一个该bean的实例。如果只存在一个web应用，则该bean的作用域与`singleton`类似。适合于基于web的Spring ApplicationContext。
+
+-   `websocket`： 该作用域是Spring新增的作用域，该作用域将该bean实例作用范围限定在一个生命周期的WebSocket中。适合于基于web的Spring ApplicationContext。
 
