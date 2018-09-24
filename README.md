@@ -26,6 +26,7 @@
 -   [Spring官方文档学习](./Java/Spring官方文档学习.md)
 
 -   [Spring容器扩展点之BeanPostProcessor](./Java/Spring容器扩展点之BeanPostProcessor.md)
+-   [Spring容器扩展点之BeanFactoryPostProcessor](./Java/Spring容器扩展点之BeanFactoryPostProcessor.md)
 
 ## Kotlin
 
