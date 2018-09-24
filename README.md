@@ -25,6 +25,8 @@
 
 -   [Spring官方文档学习](https://github.com/dragonhht/spring-study/blob/master/README.md)
 
+-   [Spring容器扩展点之BeanPostProcessor](./Java/Spring容器扩展点之BeanPostProcessor.md)
+
 ## Kotlin
 
 -   [Kotlin学习](https://github.com/dragonhht/Kotlin-Study-Java/blob/master/README.md)
