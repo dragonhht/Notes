@@ -23,7 +23,7 @@
 
 -   [Spring Bean学习](./Java/Spring-Bean学习.md)
 
--   [Spring官方文档学习](https://github.com/dragonhht/spring-study/blob/master/README.md)
+-   [Spring官方文档学习](./Java/Spring官方文档学习.md)
 
 -   [Spring容器扩展点之BeanPostProcessor](./Java/Spring容器扩展点之BeanPostProcessor.md)
 
