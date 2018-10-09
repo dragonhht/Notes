@@ -29,6 +29,7 @@
 
 -   [Spring容器扩展点之BeanPostProcessor](./Java/Spring容器扩展点之BeanPostProcessor.md)
 -   [Spring容器扩展点之BeanFactoryPostProcessor](./Java/Spring容器扩展点之BeanFactoryPostProcessor.md)
+-   [Spring容器扩展点之Aware接口](./Java/Spring容器扩展点之Aware接口.md)
 
 ## Kotlin
 
