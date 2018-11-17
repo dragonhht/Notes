@@ -2,34 +2,29 @@
 
 ## 安装命令
 - deb
-  ==sudo  dpkg  -i  *.deb==
+  `sudo  dpkg  -i  *.deb`
 
 - apt-get
-   ==sudo apt-get install xxx==
+   `sudo apt-get install xxx`
 
 - make install源代码安装
-   1.解压缩
-   	==tar -zxf nagios-4.0.2.tar.gz==  
-   	2.进入目录
-   	==cd nagios-4.0.2==
-   	3.配置
-   	==./configure --prefix=/usr/local/nagios==     
-   	4.编译
-   	==make all==
-   	5.安装
-   	==make install && make install-init && make install-commandmode && make install-config==
 
-- 以root权限打开文件管理
-   ==sudo nautilus==
+    1.解压缩: `tar -zxf nagios-4.0.2.tar.gz`
 
-- 查看已安装的应用
-   ==dpkg --list==
+   	2.进入目录: `cd nagios-4.0.2`
 
-- 彻底卸载应用
-   ==sudo apt-get --purge remove 应用名==
+   	3.配置: `./configure --prefix=/usr/local/nagios`
 
-- 只卸载程序，保留配置文件
-   ==sudo apt-get remove 应用名==
+   	4.编译: `make all`
+   	5.安装: `make install && make install-init && make install-commandmode && make install-config`
+
+- 以root权限打开文件管理: `sudo nautilus`
+
+- 查看已安装的应用: `dpkg --list`
+
+- 彻底卸载应用: `sudo apt-get --purge remove 应用名`
+
+- 只卸载程序，保留配置文件: `sudo apt-get remove 应用名`
 
 
 - MySQL数据库
@@ -111,3 +106,15 @@
 
 1. 修改`/etc/mysql/mysqld.cnf` 注释 `bind-address = 127.0.0.1` 
 2. 在MySQL中添加也有任意ip访问的用户 `GRANT ALL PRIVILEGES ON *.* TO ‘huang'@'%' IDENTIFIED BY 'admin' WITH GRANT OPTION` 
+
+# 创建交换分区
+
+- 创建4G大小的交换文件:`sudo fallocate -l 4G /swapfile`
+
+- 赋予600权限： `sudo chmod 600 /swapfile`
+
+- 将创建的文件转换为交换文件: `sudo mkswap /swapfile`
+
+- 使交换文件生效: `sudo mkswap /swapfile`
+
+- 将创建的交换文件添加到`fstab`中，使交换文件永久有效: `vim /etc/fstab`, 添加：`/swapfile       swap            swap    defaults          0       0`
