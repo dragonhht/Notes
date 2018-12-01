@@ -118,3 +118,11 @@
 - 使交换文件生效: `sudo mkswap /swapfile`
 
 - 将创建的交换文件添加到`fstab`中，使交换文件永久有效: `vim /etc/fstab`, 添加：`/swapfile       swap            swap    defaults          0       0`
+
+# Deepin更换源
+
+- `sudo gedit  /etc/apt/sources.list`
+
+- 将`http://packages.deepin.com`替换为想要的源，如阿里云`https://mirrors.aliyun.com`
+
+- `sudo apt update`
