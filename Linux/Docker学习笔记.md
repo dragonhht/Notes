@@ -16,6 +16,20 @@
 
     3.  将用户加入到docker用户组 `sudo usermod -aG docker USER_NAME`
 
+-   deepin安装docker-ce
+
+    -   添加源:打开文件`sudo vim /etc/apt/sources.list`，添加源`deb [arch=amd64] https://download.docker.com/linux/debian wheezy stable`
+
+    -   `sudo apt update && sudo apt install docker-ce`
+
+-   配置用户
+
+    -   查看是否有docker用户组:`cat /etc/group | grep docker`，如果没有用户组则创建`sudo groupadd docker`
+
+    -   将当前用户加入用户组`sudo usermod -aG docker ${USER}`
+
+    -   重启docker:`sudo systemctl restart docker`（若未及时生效则可切换次用户）
+
 # 2, 相关命令
 
 -   获取镜像 `docker pull NAME[:TAG]` , 如获取Ubuntu 14.04版镜像 `docker pull ubuntu:14.04`, TAG不显示说明自动为最新版
