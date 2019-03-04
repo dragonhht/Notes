@@ -18,6 +18,12 @@
 -   [Java NIO](https://github.com/dragonhht/JavaNIO/blob/master/README.md)
 -   [HashMap解析](./Java/HashMap解析.md)
 
+-   线程
+
+    -   [线程的几种基础同步方式](./Java/thread/线程同步.md)
+
+    -   [线程的几种高级同步方式](./Java/thread/高级同步方法.md)
+
 ## 框架
 
 -   [Quartz学习](https://github.com/dragonhht/quartz-study/blob/master/README.md)
