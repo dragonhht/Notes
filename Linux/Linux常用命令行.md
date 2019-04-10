@@ -126,3 +126,9 @@
 - 将`http://packages.deepin.com`替换为想要的源，如阿里云`https://mirrors.aliyun.com`
 
 - `sudo apt update`
+
+# Vm中Ubuntu虚拟机中配置DNS问题
+
+-  情况：在`/etc/resolve.conf`文件手动修改后，过一会会被修改回原先状态
+
+-  解决方法：修改`/etc/systemd/resolved.conf`文件中的`DNS`的值
