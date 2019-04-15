@@ -89,7 +89,7 @@
 
 ## Go
 
--   [Go语言学习](https://github.com/dragonhht/goStudy/blob/master/README.md)
+-   [Go语言学习](https://github.com/dragonhht/goStudy/blob/master/go-base/README.md)
 
 ## 前端
 
