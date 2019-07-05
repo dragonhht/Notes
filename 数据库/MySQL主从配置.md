@@ -47,5 +47,3 @@ server-id=121
 -   启动slave节点: `start slave;`
 
 -   查看slave节点信息: `show slave status\G;`,当信息中`Slave_IO_Running`和`Slave_SQL_Running`都为`Yes`则说明配置成功
-
-![slave信息](https://github.com/dragonhht/GitImgs/blob/master/database/slave_status.png?raw=true)
