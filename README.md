@@ -66,6 +66,8 @@
 
 -   [Shiro学习](https://github.com/dragonhht/shiro-study/blob/master/readme.md)
 
+-   [Spring security学习](https://github.com/dragonhht/spring-security-study/blob/master/README.md)
+
 ## 分布式
 
 -   [Dubbo学习笔记](https://github.com/dragonhht/dubbo-study-kotlin/blob/master/readme.md)
