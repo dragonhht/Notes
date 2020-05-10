@@ -20,10 +20,6 @@
 
 -   [Mybatis学习笔记](./Java/Mybatis学习笔记.md)
 
--   [SpringBoot学习笔记](,/Java/SpringBoot学习笔记.md)
-
--   [Spring Shell](https://github.com/dragonhht/MyJavaStudy/tree/master/spring-shell-study)
-
 -   [WebSocket学习笔记](./Java/WebSocket学习笔记.md)
 
 -   [设计模式笔记](./Java/设计模式笔记.md)
@@ -44,15 +40,37 @@
 
 ## 框架
 
--   [Quartz学习](https://github.com/dragonhht/quartz-study/blob/master/README.md)
+-   Spring
 
--   [Spring Bean学习](./Java/Spring-Bean学习.md)
+    -   [SpringBoot学习笔记](,/Java/SpringBoot学习笔记.md)
 
--   [Spring官方文档学习](./Java/Spring官方文档学习.md)
+    -   [SpringBoot2](https://github.com/dragonhht/spring-study/tree/master/spring-boot-2)
 
--   [Spring容器扩展点之BeanPostProcessor](./Java/Spring容器扩展点之BeanPostProcessor.md)
--   [Spring容器扩展点之BeanFactoryPostProcessor](./Java/Spring容器扩展点之BeanFactoryPostProcessor.md)
--   [Spring容器扩展点之Aware接口](./Java/Spring容器扩展点之Aware接口.md)
+    -   [Spring Shell](https://github.com/dragonhht/spring-study/tree/master/spring-shell-study)
+
+    -   [spring-batch](https://github.com/dragonhht/spring-study/tree/master/spring-batch-study)
+
+    -   [spring-data-redis](https://github.com/dragonhht/spring-study/tree/master/spring-data-redis-study)
+
+    -   [spring-websocket](https://github.com/dragonhht/spring-study/tree/master/spring-websocket-study)
+
+    -   [Spring security学习](https://github.com/dragonhht/spring-study/tree/master/spring-security-study)
+
+-   Spring深入
+
+    -   [Spring Bean学习](./Java/Spring-Bean学习.md)
+
+    -   [Spring官方文档学习](./Java/Spring官方文档学习.md)
+
+    -   [Spring容器扩展点之BeanPostProcessor](./Java/Spring容器扩展点之BeanPostProcessor.md)
+
+    -   [Spring容器扩展点之BeanFactoryPostProcessor](./Java/Spring容器扩展点之BeanFactoryPostProcessor.md)
+
+    -   [Spring容器扩展点之Aware接口](./Java/Spring容器扩展点之Aware接口.md)
+
+-   其他
+
+    -   [Quartz学习](https://github.com/dragonhht/quartz-study/blob/master/README.md)
 
 ## Kotlin
 
@@ -66,13 +84,11 @@
 
 -   [Shiro学习](https://github.com/dragonhht/shiro-study/blob/master/readme.md)
 
--   [Spring security学习](https://github.com/dragonhht/spring-security-study/blob/master/README.md)
-
 ## 分布式
 
 -   [Dubbo学习笔记](https://github.com/dragonhht/dubbo-study-kotlin/blob/master/readme.md)
 -   [ZooKeeper学习笔记](./Java/ZooKeeper学习笔记.md)
--   [Spring Cloud](https://github.com/dragonhht/spring-cloud-study2/blob/master/README.md)
+-   [Spring Cloud](https://github.com/dragonhht/spring-study/blob/master/spring-cloud-study2/README.md)
 
 ## Linux
 
