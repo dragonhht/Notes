@@ -1,36 +1,27 @@
 # 一、Android生命周期
-## 1，Activity生命周期
-### 1,Activity的四种状态
-			1,Running状态：一个新Activity启动入栈后，它在屏幕最前端，
-			  处于栈的最顶端，此时它处于可见并和用户交互的激活状态。
-			2,Paused状态：当Activity被另一个透明或者Dialog样式的Activity覆盖时的状态
-			  此时它依然与窗口管理器保持连接，系统继续微乎其内部状态，所以它仍然可见，
-			  但它已经失去了焦点，固不可与用户交互。
-			3,Stopped状态：当Activity不可见时，Activity处于Stopped状态。
-			  Activity将继续保留在内存中保持的所有状态和成员信息，假设系统其他地方需要内
-			  存这是他是被回收对象的主要候选。当Activity处于Stopped状态时，一定要保存当前
-			  数据和当时UI状态，否则一旦Activity退出或者关闭时，当前的的数据和UI状态将随丢失
-			4,Killed状态：Activity被“杀死”以后后者被启动之前，处于Killed状态，这时
-			  Activity已被移出Activity堆栈中，需要重新启动才可以显示和使用。
-	转换关系：Running状态可转换成Paused状态或者Stopped状态；Paused状态可转换成Stopped状
-			 态；Running状态、Paused状态和Stopped状态都可转换成Killed状态；Killed状态
-			 可转换成Running状态
-### 2,Activity的事件的回调方法
-			1,onCreate()方法：在创建Activity是被调用。使用Eclipse等创建项目时会自动创建
-			  一个Activity，并重写onCreate(Bundle savedInstanceState)方法，用于
-			  Activity的执行初始化。
-			2,onStart()方法：启动Activity时被回调，也就是当一个Activity变为显示时被回调。
-			3,onRestart()方法：重启Activity时被调用，该方法总是在onStart以后执行。
-			4,onPaused()方法：暂停Activity时被调用。在该方法执行完毕以前，下一个
-			  Activity都不能被恢复。该方法通常用于持久保存数据。
-			5,onResume()方法：当Activity由暂停状态恢复为活动状态时被调用。调用该方法后
-			  该Activity位于Activity栈的栈顶。该方法总是在onPause()方法后执行。
-			6,onStop()方法：停止Activity是被调用。
-			7,onDestroy()方法：销毁Activity是被调用。
+## 1、Activity的四种状态
+
+1. Running状态：一个新Activity启动入栈后，它在屏幕最前端，处于栈的最顶端，此时它处于可见并和用户交互的激活状态。
+2. Paused状态：当Activity被另一个透明或者Dialog样式的Activity覆盖时的状态此时它依然与窗口管理器保持连接，系统继续微乎其内部状态，所以它仍然可见，但它已经失去了焦点，固不可与用户交互。
+3. Stopped状态：当Activity不可见时，Activity处于Stopped状态。Activity将继续保留在内存中保持的所有状态和成员信息，假设系统其他地方需要内存这是他是被回收对象的主要候选。当Activity处于Stopped状态时，一定要保存当前数据和当时UI状态，否则一旦Activity退出或者关闭时，当前的的数据和UI状态将随丢失
+4. Killed状态：Activity被“杀死”以后后者被启动之前，处于Killed状态，这时Activity已被移出Activity堆栈中，需要重新启动才可以显示和使用。
+
+```转换关系：Running状态可转换成Paused状态或者Stopped状态；Paused状态可转换成Stopped状态；Running状态、Paused状态和Stopped状态都可转换成Killed状态；Killed状态可转换成Running状态```
+
+## 2、Activity的事件的回调方法
+
+1. onCreate()方法：在创建Activity是被调用。使用Eclipse等创建项目时会自动创建一个Activity，并重写onCreate(Bundle savedInstanceState)方法，用于Activity的执行初始化。
+2. onStart()方法：启动Activity时被回调，也就是当一个Activity变为显示时被回调。
+3. onRestart()方法：重启Activity时被调用，该方法总是在onStart以后执行。
+4. onPaused()方法：暂停Activity时被调用。在该方法执行完毕以前，下一个Activity都不能被恢复。该方法通常用于持久保存数据。
+5. onResume()方法：当Activity由暂停状态恢复为活动状态时被调用。调用该方法后该Activity位于Activity栈的栈顶。该方法总是在onPause()方法后执行。
+6. onStop()方法：停止Activity是被调用。
+7. onDestroy()方法：销毁Activity是被调用。
+
 # 二、UI设计
-## 1,界面布局
-### 1,相对布局（RelativeLayout）：
-##### 放入其中的组件是相对于兄弟组件，或者是父容器的位置进行排列的
+## 1. 界面布局
+### 1. 相对布局（RelativeLayout）
+``` 放入其中的组件是相对于兄弟组件，或者是父容器的位置进行排列的```
 ###### RelativeLayout常用属性：
 - android:gravity
 > 用于设置布局管理器中个子组件的摆放位置  
@@ -68,8 +59,8 @@
 - android:layout_toRightOf
 > 其属性值为其他UI组件的id属性，用于指定该组件位于哪个组件的左侧
 		
-### 2,线性布局(LinearLayout)
-##### 将放入其中的组件按照垂直或者水平方向来布局，也就是控制放入其中的组件横向排列或纵向排列
+### 2. 线性布局(LinearLayout)
+```将放入其中的组件按照垂直或者水平方向来布局，也就是控制放入其中的组件横向排列或纵向排列```
 ###### LinearLayout常用的属性
 - android:orientation
 > 用于设置布局管理器内组件的排列方式，可选值为horizontal和vertical，默认值为vertical。其  
@@ -81,8 +72,8 @@
 > fill、clip\_vertical和clip\_vertical。这些值也可以同时同时指定，各属性值之间用竖线  
 > 隔开(竖线前后不能有空格)。如指定右下角：right|bottom
 
-### 3，帧布局(frameLayout)：
-##### 每加入一个组件都将创建一个空白的区域，通常称为一帧，这些帧都会被放置在屏幕的左上角，多个组件层叠在屏幕排序，后面的组件将会覆盖前面的组件
+### 3. 帧布局(frameLayout)：
+```每加入一个组件都将创建一个空白的区域，通常称为一帧，这些帧都会被放置在屏幕的左上角，多个组件层叠在屏幕排序，后面的组件将会覆盖前面的组件```
 ###### FrameLayout常用属性
 - android:foreground
 > 设置该帧布局的前景图像
@@ -90,8 +81,8 @@
 - android:froegroundGravity
 > 定义绘制前景图像的gravity属性，也就是前景图像现实的位置
 
-### 4，表格布局(TableLayout)
-##### 与常见的表格类似，一行、列形式来管理放入其中的UI组件。在表格布局中可以添加多个TableRow标记，表示表格的一列
+### 4. 表格布局(TableLayout)
+```与常见的表格类似，一行、列形式来管理放入其中的UI组件。在表格布局中可以添加多个TableRow标记，表示表格的一列```
 ###### TableLayout支持的的属性
 - android:collapseColumns
 > 设置需要隐藏的列的列序号（序号从0开始）,多个列序号之间用“，”分隔
@@ -102,8 +93,8 @@
 - android:stretchColumn
 > 设置允许被拉伸的列的列序号(序号从0开始),多个列序号之间用","分隔
 
-### 5，网格布局(GridLayout)
-##### 屏幕被虚拟的细线划分成行、列和单元格，每个单元格放置一个组件，并且这个组件也可以跨行或跨列摆放
+### 5. 网格布局(GridLayout)
+```屏幕被虚拟的细线划分成行、列和单元格，每个单元格放置一个组件，并且这个组件也可以跨行或跨列摆放```
 ###### GridLayout常用的属性
 - android:columnCount
 > 用于指定网格的最大列数
@@ -129,12 +120,66 @@
 > center\_vertical、fill\_vertical、center\_horizontal、fill\_horizontal、  
 > center、fill、clip\_vertical、clip\_horizontal、start、end
 
-## 2，界面组件
+## 2. 界面组件
+### 1. TextView
+```用于文本内容显示```
+```
+<TextView
+        android:id="@+id/tv_one"
+        android:text="@string/text_view"
+        android:textColor="@color/blue"
+        android:textStyle="italic"
+        android:textSize="40sp"
+        android:background="#FFFFFFFF"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="50dp"
+        android:shadowRadius="3.0"
+        android:shadowColor="@color/black"
+        android:shadowDx="10.0"
+        android:shadowDy="10.0"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+        <requestFocus/>
+    </TextView>
+```
 
-## 3，界面事件
-### 1,按键事件
-### 2，触摸事件
-### 3，点击事件
+### 2. Button
+```
+<Button
+        android:text="@string/btn_text"
+        android:background="@drawable/btn_selector"
+        android:backgroundTint="@color/btn_selector"
+        android:layout_width="200dp"
+        android:layout_height="100dp" />
+```
+
+-	点击事件
+```
+		// 点击事件
+        btnOne.setOnClickListener { Log.e(TAG, "onCreate: ", ) }
+
+        // 长按事件
+        btnOne.setOnLongClickListener {
+            Log.e(TAG, "onCreate: ")
+            false
+        }
+
+        // 触摸事件
+        btnOne.setOnTouchListener { view, motionEvent ->
+            Log.e(TAG, "onCreate: ")
+            false
+        }
+```
+
+
+## 3. 界面事件
+### 1. 按键事件
+### 2. 触摸事件
+### 3. 点击事件
 		
 # 三、Intent
 ## Intent（意图）
