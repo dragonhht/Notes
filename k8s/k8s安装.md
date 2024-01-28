@@ -46,6 +46,26 @@
 
 ### 2.6 修改 linux 的内核参数
 
+1. 修改`/etc/sysctl.d/kubernetes.conf`文件，添加如下配置
+
+> net.bridge.bridge-nf-call-ip6tables = 1  
+> net.bridge.bridge-nf-call-iptables = 1  
+> net.ipv4.ip_forward = 1
+
+2. 加载配置
+
+> sysctl -p
+
+3. 加载网桥过滤模块
+
+> modprobe br_netfilter
+
+4. 查看网桥过滤模块是否加载成功
+
+> lsmod | grep br_netfilter
+
+### 2.7 配置 ipvs 功能
+
 1. 安装 ipset 和 ipvsadm
 
 > yum install ipset ipvsadm -y
@@ -75,7 +95,7 @@
 
 注：`以上系统配置完成后需要重启系统使其生效`
 
-### 2.7 安装 Containerd
+### 2.8 安装 Containerd
 
 该部分内容可查看[Containerd 学习笔记](../Linux/Containerd%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.md)
 

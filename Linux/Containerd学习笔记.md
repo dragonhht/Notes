@@ -38,3 +38,13 @@
 2. 静态容器: `ctr container`或`ctr c`
 
 3. 动态容器(任务): `ctr task`或`ctr t`
+
+# 问题
+
+## Containerd 提示 runc: symbol lookup error: runc: undefined symbol: seccomp_notify_respond
+
+> 这个是说缺少依赖包 libseccomp，需要注意的是 centos7 中 yum 下载的版本是 2.3 的，版本不满足我们最新 containerd 的需求，需要下载 2.4 以上的
+
+1. yum 更新
+
+> yum install libseccomp -y
