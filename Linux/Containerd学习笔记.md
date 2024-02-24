@@ -45,6 +45,15 @@
 
 > 这个是说缺少依赖包 libseccomp，需要注意的是 centos7 中 yum 下载的版本是 2.3 的，版本不满足我们最新 containerd 的需求，需要下载 2.4 以上的
 
-1. yum 更新
+1. 卸载原 libseccomp
 
-> yum install libseccomp -y
+   > rpm -qa | grep libseccomp  
+   > rpm -e libseccomp-2.3.1-4.el7.x86_64 --nodeps
+
+2. 下载高于 2.4 以上的包
+
+> wget http://rpmfind.net/linux/centos/8-stream/BaseOS/x86_64/os/Packages/libseccomp-2.5.1-1.el8.x86_64.rpm
+
+3. 安装
+
+> rpm -ivh libseccomp-2.5.1-1.el8.x86_64.rpm
